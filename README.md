@@ -81,7 +81,6 @@ The meaning of this command is based on page breaks to delimit, inputfile.txt 1 
 
 Here is to say that I defined the page break for the "\ f", because the inputfile.txt file does not "\ f" appears, <br>
 so all the files are considered in the first page. After the implementation of this command there is an error message.<br>
-
 11.<br>
 input: $ ./selpg -s 1 -e 3 inputfile.txt > outputfile.txt 2>errorfile.txt &<br>
 output:<br>
@@ -126,6 +125,7 @@ if saAddr.start < 1 {
 <br>
 而函数runCommand执行解析后的命令。对于管道问题，我使用了os/exec 包来生成子进程并通过管道输入信息<br>
 这里给出部分代码：<br>
+
 ```
 fout := os.Stdout
 	var cmd *exec.Cmd
