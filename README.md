@@ -68,15 +68,17 @@ The result is same as the test 7.<br>
 9.<br>
 input: $ ./selpg -s 2 -e 5 -l 7 inputfile.txt<br>
 output:<br>
+
 ![image](https://github.com/Tendernesszh/service-computing-selpg/blob/master/testpicture/test11.png)<br>
 This command means that 2 to 5 pages of the inputfile.txt file are output to the screen, but the number of lines<br>
-per page is 7. That is, the first inputfile.txt file re-page and then output. Of course, the contents of the<br>
+<per page is 7. That is, the first inputfile.txt file re-page and then output. Of course, the contents of the<br>
 process of this document is the same<vr>
 10.<br>
 input: $ ./selpg -s 1 -e 4 -f inputfile.txt<br>
 output:<br>
 ![image](https://github.com/Tendernesszh/service-computing-selpg/blob/master/testpicture/test12.png)<br>
 The meaning of this command is based on page breaks to delimit, inputfile.txt 1 to 4 pages output to the screen. <br>
+
 Here is to say that I defined the page break for the "\ f", because the inputfile.txt file does not "\ f" appears, <br>
 so all the files are considered in the first page. After the implementation of this command there is an error message.<br>
 
@@ -102,20 +104,25 @@ type selpgArgs struct {
 <br>
 函数initSelpg用于初始化参数，解析命令，并且判断输入是否合理，比如说起始页数是不是大于1，终止页是不是大于等于起始页,<br>
 以及是不是只有一个读入文件被调用。<br>
+
 ```
 flag.Parse()
-......
-......
+```
+......<br>
+......<br>
+
+```
 if saAddr.start < 1 {
 		printError("start page need greater than 0!")
 	}
 	if saAddr.end < saAddr.start {
-    printError("end page need grater than or equal to start page!")
+		printError("end page need grater than or equal to start page!")
 	}
 	if saAddr.pagelength < 1 {
-    printError("page length need greater than 0!")
+		printError("page length need greater than 0!")
 	}
 ```
+<br>
 <br>
 而函数runCommand执行解析后的命令。对于管道问题，我使用了os/exec 包来生成子进程并通过管道输入信息<br>
 这里给出部分代码：<br>
@@ -129,10 +136,9 @@ fout := os.Stdout
 			printError("could not open pipe to \"" + tmpStr + "\"!")
 		}
 	}
-  ......
-  ......
-  
 ```
+<br>
+ ......<br>
+ ......<br>
+ 
 
-
-e
