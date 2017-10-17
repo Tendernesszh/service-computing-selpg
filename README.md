@@ -7,4 +7,34 @@ Test:<br>
 input: $ ./selpg -s 1 -e 1 inputfile.txt<br>
 output:<br>
 ![image](https://github.com/Tendernesszh/service-computing-selpg/blob/master/testpicture/test1.png)<br>
-
+As Figure, the success of the first page of the 10 lines of text output to the screen.<br>
+2.<br>
+input: $ ./selpg -s 1 -e 1 < inputfile.txt<br>
+output:<br>
+3.<br>
+input: $ python testout.py | ./selpg -s 1 -e 1 < inputfile.txt<br>
+output:<br>
+4.<br>
+input: $ ./selpg -s 5 -e 10 inputfile.txt >outputfile.txt<br>
+output:<br>
+5.<br>
+input: $ ./selpg -s 1 -e 8 inputfile.txt 2>errorfile.txt<br>
+output:<br>
+6.<br>
+input: $ ./selpg -s 1 -e 1 < inputfile.txt<br>
+output:<br>
+7.<br>
+input: $ ./selpg -s 1 -e 1 < inputfile.txt<br>
+output:<br>
+8.<br>
+input: $ ./selpg -s 1 -e 1 < inputfile.txt<br>
+output:<br>
+9.<br>
+input: $ ./selpg -s 1 -e 1 < inputfile.txt<br>
+output:<br>
+10.<br>
+input: $ ./selpg -s 1 -e 1 < inputfile.txt<br>
+output:<br>
+11.<br>
+input: $ ./selpg -s 1 -e 1 < inputfile.txt<br>
+output:<br>
