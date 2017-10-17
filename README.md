@@ -2,12 +2,14 @@
 ## 测试部分
 First, generate three files, inputFile.txt, outputfile.txt and errorfile.txt<br>
 inputFile.txt file has 10 pages, each page has 10 lines, of course, I specified selpg each line is also 10 pages (default is 72)<br>
+
 Test:<br>
 1.<br>
 input: $ ./selpg -s 1 -e 1 inputfile.txt<br>
 output:<br>
 ![image](https://github.com/Tendernesszh/service-computing-selpg/blob/master/testpicture/test1.png)<br>
 As Figure, the success of the first page of the 10 lines of text output to the screen.<br>
+
 
 2.<br>
 input: $ ./selpg -s 1 -e 1 < inputfile.txt<br>
@@ -18,6 +20,7 @@ The results of this test are similar to test 1.<br>
 3.<br>
 input: $ python testout.py | ./selpg -s 1 -e 1 < inputfile.txt<br>
 output:<br>
+
 ![image](https://github.com/Tendernesszh/service-computing-selpg/blob/master/testpicture/test3.png)<br>
 ![image](https://github.com/Tendernesszh/service-computing-selpg/blob/master/testpicture/test3(1).png)<br>
 The meaning of this command is to enter the first page of the testout.py file as input to the screen.<br>
@@ -54,23 +57,30 @@ content, and there is no error message so the errorfile.txt only have the inform
 input: $ ./selpg -s 2 -e 4 inputfile.txt >outputfile.txt 2>/dev/null<br>
 output:<br>
 ![image](https://github.com/Tendernesszh/service-computing-selpg/blob/master/testpicture/test7.png)<br>
-The testout does not change compared to the previous one, and the command has been executed successfully,<br>
+The outputfile.txt does not change compared to the previous one, and the command has been executed successfully,<br>
 so there is no error message.<br>
 
 8.<br>
 input: $ ./selpg -s 1 -e 3 inputfile.txt >/dev/null<br>
 output:<br>
 ![image](https://github.com/Tendernesszh/service-computing-selpg/blob/master/testpicture/test8.png)<br>
-
+The result is same as the test 7.<br>
 
 9.<br>
 input: $ ./selpg -s 2 -e 5 -l 7 inputfile.txt<br>
 output:<br>
 ![image](https://github.com/Tendernesszh/service-computing-selpg/blob/master/testpicture/test11.png)<br>
+This command means that 2 to 5 pages of the inputfile.txt file are output to the screen, but the number of lines<br>
+per page is 7. That is, the first inputfile.txt file re-page and then output. Of course, the contents of the<br>
+process of this document is the same<vr>
+
 10.<br>
 input: $ ./selpg -s 1 -e 4 -f inputfile.txt<br>
 output:<br>
 ![image](https://github.com/Tendernesszh/service-computing-selpg/blob/master/testpicture/test12.png)<br>
+The meaning of this command is based on page breaks to delimit, inputfile.txt 1 to 4 pages output to the screen. <br>
+Here is to say that I defined the page break for the "\ f", because the inputfile.txt file does not "\ f" appears, <br>
+so all the files are considered in the first page. After the implementation of this command there is an error message.<br>
 
 11.<br>
 input: $ ./selpg -s 1 -e 3 inputfile.txt > outputfile.txt 2>errorfile.txt &<br>
