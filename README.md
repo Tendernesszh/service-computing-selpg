@@ -5,3 +5,4 @@ inputFile.txt file has 10 pages, each page has 10 lines, of course, I specified 
 Test:<br>
 1.<br>
 input: $ ./selpg -s 1 -e 1 inputfile.txt<br>
+output: ![Alt text](d:/path/test1.png)<br>
