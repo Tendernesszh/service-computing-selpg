@@ -21,16 +21,16 @@ output:<br>
 input: $ ./selpg -s 1 -e 8 inputfile.txt 2>errorfile.txt<br>
 output:<br>
 6.<br>
-input: $ ./selpg -s 1 -e 1 < inputfile.txt<br>
+input: $ ./selpg -s 4 -e 6 inputfile.txt >outputfile.txt 2>errorfil.txt<br>
 output:<br>
 7.<br>
-input: $ ./selpg -s 1 -e 1 < inputfile.txt<br>
+input: $ ./selpg -s 2 -e 4 inputfile.txt >outputfile.txt 2>/dev/null<br>
 output:<br>
 8.<br>
-input: $ ./selpg -s 1 -e 1 < inputfile.txt<br>
+input: $ ./selpg -s 1 -e 3 inputfile.txt >/dev/null<br>
 output:<br>
 9.<br>
-input: $ ./selpg -s 1 -e 1 < inputfile.txt<br>
+input: $ ./selpg -s 2 -e 5 -l 7 inputfile.txt<br>
 output:<br>
 10.<br>
 input: $ ./selpg -s 1 -e 1 < inputfile.txt<br>
