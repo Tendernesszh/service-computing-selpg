@@ -18,8 +18,7 @@ output:<br>
 The results of this test are similar to test 1.<br>
 
 3.<br>
-input: $ python testout.py | ./selpg -s 1 -e 1 < inputfile.txt<br>
-output:<br>
+input: $ python testout.py | ./selpg -s 1 -e 1 < inputfile.txt<br>output:<br>
 
 ![image](https://github.com/Tendernesszh/service-computing-selpg/blob/master/testpicture/test3.png)<br>
 ![image](https://github.com/Tendernesszh/service-computing-selpg/blob/master/testpicture/test3(1).png)<br>
@@ -29,11 +28,11 @@ My testout.py file is empty, so there is no output on the screen, but the instru
 
 4.<br>
 input: $ ./selpg -s 5 -e 10 inputfile.txt >outputfile.txt<br>
-output:<br>
-![image](https://github.com/Tendernesszh/service-computing-selpg/blob/master/testpicture/test4(1).png)<br>
+output:<br>![image](https://github.com/Tendernesszh/service-computing-selpg/blob/master/testpicture/test4(1).png)<br>
 ![image](https://github.com/Tendernesszh/service-computing-selpg/blob/master/testpicture/test4(2).png)<br>
 This command writes 5 to 10 pages of inputfile.txt to outputfile.txt. As shown in the figure, outputfile.txt has had the<br>
 content of inputfile.txt.<br>
+
 
 5.<br>
 input: $ ./selpg -s 1 -e 8 inputfile.txt 2>errorfile.txt<br>
@@ -73,7 +72,6 @@ output:<br>
 This command means that 2 to 5 pages of the inputfile.txt file are output to the screen, but the number of lines<br>
 per page is 7. That is, the first inputfile.txt file re-page and then output. Of course, the contents of the<br>
 process of this document is the same<vr>
-
 10.<br>
 input: $ ./selpg -s 1 -e 4 -f inputfile.txt<br>
 output:<br>
@@ -86,3 +84,55 @@ so all the files are considered in the first page. After the implementation of t
 input: $ ./selpg -s 1 -e 3 inputfile.txt > outputfile.txt 2>errorfile.txt &<br>
 output:<br>
 ![image](https://github.com/Tendernesszh/service-computing-selpg/blob/master/testpicture/test14.png)<br>
+
+
+## 设计说明
+
+selpgArgs是一个结构体，用于存储命令行的所有参数，构造如下:<br>
+```
+type selpgArgs struct {
+	start int
+	end   int
+	pagelength   int
+	page_seperator bool
+	print_dest string
+	inFilename string
+}
+```
+<br>
+函数initSelpg用于初始化参数，解析命令，并且判断输入是否合理，比如说起始页数是不是大于1，终止页是不是大于等于起始页,<br>
+以及是不是只有一个读入文件被调用。<br>
+```
+flag.Parse()
+......
+......
+if saAddr.start < 1 {
+		printError("start page need greater than 0!")
+	}
+	if saAddr.end < saAddr.start {
+    printError("end page need grater than or equal to start page!")
+	}
+	if saAddr.pagelength < 1 {
+    printError("page length need greater than 0!")
+	}
+```
+<br>
+而函数runCommand执行解析后的命令。对于管道问题，我使用了os/exec 包来生成子进程并通过管道输入信息<br>
+这里给出部分代码：<br>
+```
+fout := os.Stdout
+	var cmd *exec.Cmd
+	if args.printDest != "" {
+		tmpStr := fmt.Sprintf("%s", args.printDest)
+		cmd = exec.Command("sh", "-c", tmpStr)
+		if err != nil {
+			printError("could not open pipe to \"" + tmpStr + "\"!")
+		}
+	}
+  ......
+  ......
+  
+```
+
+
+e
